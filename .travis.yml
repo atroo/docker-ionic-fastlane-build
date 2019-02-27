@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "node"
+
+services:
+  - docker
+
+script:
+  - docker build -t atroo/docker-ionic-fastlane-build:latest .
+  - echo "ttt" | docker login -u "$DOCKER_USER" --password-stdin
+  - docker push atroo/docker-ionic-fastlane-build:latest
