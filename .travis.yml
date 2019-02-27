@@ -7,5 +7,5 @@ services:
 
 script:
   - docker build -t atroo/docker-ionic-fastlane-build:ionic3 .
-  - echo "ttt" | docker login -u "$DOCKER_USER" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
   - docker push atroo/docker-ionic-fastlane-build:ionic3
