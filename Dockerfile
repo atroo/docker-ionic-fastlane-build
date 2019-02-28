@@ -4,6 +4,9 @@ MAINTAINER Martin Foerster <martin@atroo.de>
 
 ENV NODEJS_VERSION=8.12.0 \
     PATH=$PATH:/opt/node/bin
+ 
+ENV LC_ALL=en_US.UTF-8 \
+    LANG=en_US.UTF-8
 
 WORKDIR "/opt/node"
 
