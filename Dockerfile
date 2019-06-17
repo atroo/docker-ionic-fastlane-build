@@ -2,7 +2,7 @@ FROM lovato/docker-android:latest
 
 MAINTAINER Martin Foerster <martin@atroo.de>
 
-ENV NODEJS_VERSION=8.12.0 \
+ENV NODEJS_VERSION=10.16.0 \
     PATH=$PATH:/opt/node/bin
  
 ENV LC_ALL=en_US.UTF-8 \
