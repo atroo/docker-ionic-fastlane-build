@@ -4,7 +4,6 @@ MAINTAINER Martin Foerster <martin@atroo.de>
 
 ENV NODEJS_VERSION=12.14.1 \
     CORDOVA_VERSION=8.1.2 \
-    IONIC_VERSION=5.4.15 \
     FASTLANE_VERSION=2.140 \
     BUNDLER_VERSION=2.1.4 |
     PATH=$PATH:/opt/node/bin
@@ -25,5 +24,3 @@ RUN gem install bundler:${BUNDLER_VERSION}
 WORKDIR "/tmp"
 
 RUN npm i -g --unsafe-perm cordova@${CORDOVA_VERSION}
-RUN npm i -g --unsafe-perm ionic@${IONIC_VERSION}
-
