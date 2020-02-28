@@ -19,9 +19,7 @@ RUN apt-get update && apt-get install -y curl git ca-certificates less build-ess
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
     
-RUN wget http://ftp.ruby-lang.org/pub/ruby/${RUBY_VERSION}/ruby-${RUBY_VERSION}.0.tar.gz && \
-    tar -xzvf ruby-${RUBY_VERSION}.0.tar.gz && cd ruby-${RUBY_VERSION}.0/ && ./configure && \
-    make && make install && ruby -v
+RUN curl -sSL https://get.rvm.io | bash -s stable --ruby
 
 RUN gem install fastlane:${FASTLANE_VERSION}
 RUN gem install bundler:${BUNDLER_VERSION}
