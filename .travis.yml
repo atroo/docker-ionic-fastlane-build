@@ -8,4 +8,4 @@ services:
 script:
   - docker build -t atroo/docker-ionic-fastlane-build:cordova-8 .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
-  - docker push atroo/docker-ionic-fastlane-build:ionic3
+  - docker push atroo/docker-ionic-fastlane-build:cordova-8
