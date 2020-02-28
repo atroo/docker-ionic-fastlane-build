@@ -2,7 +2,11 @@ FROM lovato/docker-android:latest
 
 MAINTAINER Martin Foerster <martin@atroo.de>
 
-ENV NODEJS_VERSION=10.16.0 \
+ENV NODEJS_VERSION=12.14.1 \
+    CORDOVA_VERSION=8.1.2 \
+    IONIC_VERSION=5.4.15 \
+    FASTLANE_VERSION=2.140 \
+    BUNDLER_VERSION=2.1.4 |
     PATH=$PATH:/opt/node/bin
  
 ENV LC_ALL=en_US.UTF-8 \
@@ -15,10 +19,8 @@ RUN apt-get update && apt-get install -y curl git ca-certificates ruby-full less
     rm -rf /var/lib/apt/lists/* && \
     apt-get clean
 
-RUN gem install fastlane -NV
-
-ENV CORDOVA_VERSION 8.0.0
-ENV IONIC_VERSION 3.20.1
+RUN gem install fastlane:${FASTLANE_VERSION}
+RUN gem install bundler:${BUNDLER_VERSION}
 
 WORKDIR "/tmp"
 
