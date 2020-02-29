@@ -5,7 +5,7 @@ MAINTAINER Martin Foerster <martin@atroo.de>
 ENV NODEJS_VERSION=12.14.1 \
     RUBY_VERSION=2.7 \
     CORDOVA_VERSION=8.1.2 \
-    FASTLANE_VERSION=2.140 \
+    FASTLANE_VERSION=2.142.0 \
     BUNDLER_VERSION=2.1.4 \
     PATH=$PATH:/opt/node/bin
  
