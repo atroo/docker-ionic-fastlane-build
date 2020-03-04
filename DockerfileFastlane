@@ -1,0 +1,3 @@
+FROM ruby:2.7-alpine
+
+RUN sudo gem install fastlane -NV
