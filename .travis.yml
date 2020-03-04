@@ -1,11 +1,13 @@
-language: node_js
-node_js:
-  - "node"
+dist: trusty
 
-services:
-  - docker
-
-script:
-  - docker build -t atroo/docker-ionic-fastlane-build:cordova-8 .
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
-  - docker push atroo/docker-ionic-fastlane-build:cordova-8
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - docker build -t atroo/docker-ionic-fastlane-build:cordova-8 .
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+      - docker push atroo/docker-ionic-fastlane-build:cordova-8
+      script:
+      - docker build -t atroo/fastlane:latest -f DockerfileFastlane .
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+      - docker push atroo/fastlane:latest
