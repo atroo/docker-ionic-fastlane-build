@@ -2,8 +2,13 @@ dist: trusty
 
 jobs:
   include:
-    - stage: build docker image
+    - stage: build cordova docker image
       script:
       - docker build -t atroo/docker-ionic-fastlane-build:cordova-8 .
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
       - docker push atroo/docker-ionic-fastlane-build:cordova-8
+    - stage: build fastlane docker image
+      script:
+      - docker build -t atroo/fastlane-build:latest -f DockerFastlane .
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+      - docker push atroo/fastlane-build:latest
