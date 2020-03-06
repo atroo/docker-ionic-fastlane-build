@@ -1,3 +1,17 @@
-FROM ruby:2.7-alpine
+FROM ruby:alpine
 
-RUN gem install fastlane -NV
+# build essentials + fastlane gem installation + cleanup
+RUN apk add --update --no-cache alpine-sdk && \
+    gem install fastlane -NV && \
+    apk del alpine-sdk
+
+# set locale needed by fastlane + cleanup
+ENV MUSL_LOCPATH="/usr/share/i18n/locales/musl"
+
+RUN apk --no-cache add libintl && \
+	apk --no-cache --virtual .locale_build add cmake make musl-dev gcc gettext-dev git && \
+	git clone https://gitlab.com/rilian-la-te/musl-locales && \
+	cd musl-locales && cmake -DLOCALE_PROFILE=OFF -DCMAKE_INSTALL_PREFIX:PATH=/usr . && make && make install && \
+	cd .. && rm -r musl-locales && \
+	apk del .locale_build
+
