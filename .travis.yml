@@ -9,6 +9,6 @@ jobs:
       - docker push atroo/docker-ionic-fastlane-build:cordova-8
     - stage: build fastlane docker image
       script:
-      - docker build -t atroo/fastlane-build:latest -f DockerFastlane .
+      - docker build -t atroo/fastlane-build:latest -f DockerfileFastlane .
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
       - docker push atroo/fastlane-build:latest
